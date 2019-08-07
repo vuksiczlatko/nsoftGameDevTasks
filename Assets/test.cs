@@ -28,6 +28,7 @@ public class test : MonoBehaviour
     public float wavelength;
     [Range(0.1f, 10f)]
     public float timelength;
+   [HideInInspector]
     public bool useJobSystem = false;
 
 
@@ -438,28 +439,28 @@ public class test : MonoBehaviour
         return p;
     }
 
-    [BurstCompile]
-    struct AnimateRipples : IJob
-    {
-        [ReadOnly] public int i;
-        [ReadOnly] public float step, t, wavelength;
-        public NativeArray<Vector3> passedArray;
-        public void Execute()
-        {
-            float v = (i + 0.5f) * step - 1f;
-            for(int j = 0; j < size; j++)
-            {
-                float u = (j + 0.5f) * step - 1f;
-                Vector3 p;
-                float d = Mathf.Sqrt(u * u + v * v);
-                p.x = u;
-                p.y = Mathf.Sin(Mathf.PI * (4f * d - t));
-                p.y /= wavelength + 10f * d;
-                p.z = v;
-                passedArray[j] = p;
-            }
-        }
-    }
+   #region AnimateJobSystemImplementation
+   [BurstCompile]
+   struct AnimateRipples: IJob
+   {
+      [ReadOnly] public int i;
+      [ReadOnly] public float step, t, wavelength;
+      public NativeArray<Vector3> passedArray;
+      public void Execute() {
+         float v = (i + 0.5f) * step - 1f;
+         for(int j = 0; j < size; j++) {
+            float u = (j + 0.5f) * step - 1f;
+            Vector3 p;
+            float d = Mathf.Sqrt(u * u + v * v);
+            p.x = u;
+            p.y = Mathf.Sin(Mathf.PI * (4f * d - t));
+            p.y /= wavelength + 10f * d;
+            p.z = v;
+            passedArray[j] = p;
+         }
+      }
+   }
+   #endregion
 }
 
 public class Coordinate

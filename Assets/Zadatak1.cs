@@ -48,25 +48,21 @@ public class Zadatak1 : MonoBehaviour
         //Debug.Log(testM4.PrintOut());
 
 
-
-        Test.Matrix4x4 m = new Test.Matrix4x4();
-        Matrix4x4 uM = new Matrix4x4();
+        //
+        //Test.Matrix4x4 m = new Test.Matrix4x4();
+        //Matrix4x4 uM = new Matrix4x4();
         //Debug.Log("Unity Matrix:\n" + uM.ToString());
         //Debug.Log("My Matrix:\n" + m.PrintOut());
-        Test.Vector3 vec = new Test.Vector3(inputValues.x, inputValues.y, inputValues.z);
-        m.Translate(vec);
-        m.Scale(vec);
-
+        //Test.Vector3 vec = new Test.Vector3(inputValues.x, inputValues.y, inputValues.z);
+        //m.Translate(vec);
+        //m.Scale(vec);
+        //
         //Debug.Log("Quaterion:" + Quaternion.Euler(inputValues.x, inputValues.y, inputValues.z));
         //Debug.Log("My Matrix:\n" + m.PrintOut());
-
-
-
-
-
-        uM.SetTRS(Vector3.one, Quaternion.Euler(inputValues.x, inputValues.y, inputValues.z), inputValues);
-        Debug.Log("Unity Matrix:\n" + uM.ToString());
-        Debug.Log(uM.rotation);
+        //
+        //uM.SetTRS(Vector3.one, Quaternion.Euler(0, 0, 0), inputValues);
+        //Debug.Log("Unity Matrix:\n" + uM.ToString());
+        //Debug.Log(uM.rotation);
 
         //Test.Matrix4x4 q1 = new Test.Matrix4x4(3f);
         //Test.Matrix4x4 q2 = new Test.Matrix4x4();
